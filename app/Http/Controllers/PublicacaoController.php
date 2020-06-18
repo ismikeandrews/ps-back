@@ -48,7 +48,7 @@ class PublicacaoController extends Controller
 
         if ( $request->has('imagem') ) {
             $this->deletaImagem($publicacao['imagemPublicacao'], 'publicacao');
-            $request->imagemPublicacao = $this->uploadImagem($request->imagem);
+            $request->imagemPublicacao = $this->uploadImagem($request->imagem, 300, 300, 'publicacao');
         }
 
         $publicacao->update($request->all());

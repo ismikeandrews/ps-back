@@ -38,6 +38,11 @@ $router->group(['prefix' => 'sala'], function () use ($router) {
 });
 
 $router->group(['prefix' => 'usuario'], function () use ($router) {
+    $router->get('/', 'UsuarioController@index');
+    $router->post('/', 'UsuarioController@store');
+    $router->put('/{codUsuario}', 'UsuarioController@update');
+    $router->delete('/{codUsuario}', 'UsuarioController@destroy');
+
     $router->post('/sala', 'ParticipanteSalaController@store');
     $router->delete('/sala/{codUsuario}/{codSala}', 'ParticipanteSalaController@destroy');
 });
