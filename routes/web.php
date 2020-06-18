@@ -15,9 +15,20 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
+$router->group(['prefix' => 'atividade'], function () use ($router) {
+    $router->get('{codAtividade}/publicacoes', 'PublicacaoController@index');
+
+    $router->delete('{codAtividade}/publicacoes/{codNivelUsuario}', 'PublicacaoController@destroy');
+});
+
 $router->group(['prefix' => 'curtida'], function () use ($router) {
     $router->post('/', 'CurtidaPublicacaoController@store');
     $router->delete('/{codUsuario}/{codPublicacao}', 'CurtidaPublicacaoController@destroy');
+});
+
+$router->group(['prefix' => 'publicacoes'], function () use ($router) {
+    $router->post('/', 'PublicacaoController@store');
+    $router->put('/{codPublicacao}', 'PublicacaoController@update');
 });
 
 $router->group(['prefix' => 'usuario'], function () use ($router) {
