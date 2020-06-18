@@ -46,3 +46,33 @@ $router->group(['prefix' => 'usuario'], function () use ($router) {
     $router->post('/sala', 'ParticipanteSalaController@store');
     $router->delete('/sala/{codUsuario}/{codSala}', 'ParticipanteSalaController@destroy');
 });
+
+//mike
+$router->group(['prefix' => 'admin'], function () use ($router) {
+    $router->get('/', 'AdminController@index');
+    $router->get('/{codAdmin}', 'AdminController@show');
+    $router->post('/', 'AdminController@store');
+    $router->put('/{codAdmin}', 'AdminController@update');
+});
+
+$router->group(['prefix' => 'atividade'], function () use ($router) {
+   $router->get('/', 'AtividadeController@index');
+   $router->get('/{codAtividade}', 'AtividadeController@show');
+   $router->post('/', 'AtividadeController@store');
+   $router->put('/{codAtividade}', 'AtividadeController@update');
+});
+
+$router->group(['prefix' => 'categoria'], function () use ($router) {
+    $router->get('/','CategoriaController@index');
+    $router->get('/{codCategoria}','CategoriaController@show');
+    $router->post('/','CategoriaController@store');
+    $router->put('/{codCategoria}','CategoriaController@update');
+});
+
+$router->group(['prefix' => 'passo-atividade'], function () use ($router) {
+    $router->get('/', 'PassoAtividadeController@index');
+    $router->get('/{codPassoAtividade}', 'PassoAtividadeController@show');
+    $router->post('/', 'PassoAtividadeController@store');
+    $router->put('/{codPassoAtividade}', 'PassoAtividadeController@update');
+
+});
