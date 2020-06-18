@@ -27,7 +27,7 @@ class PublicacaoController extends Controller
      * @throws ValidationException
      */
     public function store(Request $request){
-        $publicacao = $this->validate($request, Endereco::$rules);
+        $publicacao = $this->validate($request, Publicacao::$rules);
         $publicacao['imagemPublicacao'] = $this->uploadImagem($request->imagem, 300, 300, 'publicacao');
 
         Publicacao::create($publicacao);
