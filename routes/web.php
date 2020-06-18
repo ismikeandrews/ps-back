@@ -17,8 +17,7 @@ $router->get('/', function () use ($router) {
 
 $router->group(['prefix' => 'atividade'], function () use ($router) {
     $router->get('{codAtividade}/publicacoes', 'PublicacaoController@index');
-
-    $router->delete('{codAtividade}/publicacoes/{codNivelUsuario}', 'PublicacaoController@destroy');
+    $router->get('{codAtividade}/salas', 'SalaController@index');
 });
 
 $router->group(['prefix' => 'curtida'], function () use ($router) {
@@ -29,6 +28,13 @@ $router->group(['prefix' => 'curtida'], function () use ($router) {
 $router->group(['prefix' => 'publicacoes'], function () use ($router) {
     $router->post('/', 'PublicacaoController@store');
     $router->put('/{codPublicacao}', 'PublicacaoController@update');
+    $router->delete('/{codPublicacao}', 'PublicacaoController@destroy');
+});
+
+$router->group(['prefix' => 'sala'], function () use ($router) {
+    $router->post('/', 'SalaController@store');
+    $router->put('/{codSala}', 'SalaController@update');
+    $router->delete('/{codSala}', 'SalaController@destroy');
 });
 
 $router->group(['prefix' => 'usuario'], function () use ($router) {
