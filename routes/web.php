@@ -17,5 +17,5 @@ $router->get('/', function () use ($router) {
 
 $router->group(['prefix' => 'curtida'], function () use ($router) {
     $router->post('/', 'CurtidaPublicacaoController@store');
-    $router->delete('/{codNivelUsuario}', 'CurtidaPublicacaoController@destroy');
+    $router->delete('/{codUsuario}/{codPublicacao}', 'CurtidaPublicacaoController@destroy');
 });
