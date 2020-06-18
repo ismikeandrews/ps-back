@@ -19,3 +19,8 @@ $router->group(['prefix' => 'curtida'], function () use ($router) {
     $router->post('/', 'CurtidaPublicacaoController@store');
     $router->delete('/{codUsuario}/{codPublicacao}', 'CurtidaPublicacaoController@destroy');
 });
+
+$router->group(['prefix' => 'usuario'], function () use ($router) {
+    $router->post('/sala', 'ParticipanteSalaController@store');
+    $router->delete('/sala/{codUsuario}/{codSala}', 'ParticipanteSalaController@destroy');
+});
