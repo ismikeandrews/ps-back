@@ -27,6 +27,8 @@ $app->withFacades();
 
 $app->withEloquent();
 
+
+
 /*
 |--------------------------------------------------------------------------
 | Register Container Bindings
@@ -73,7 +75,7 @@ $app->configure('app');
 */
 
 $app->middleware([
-    App\Http\Middleware\ExampleMiddleware::class,
+    // App\Http\Middleware\ExampleMiddleware::class,
     App\Http\Middleware\CorsMiddleware::class
 ]);
 
