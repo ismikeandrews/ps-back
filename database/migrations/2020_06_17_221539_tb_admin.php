@@ -15,8 +15,9 @@ class TbAdmin extends Migration
     {
         Schema::create('tbAdmin', function(Blueprint $table){
             $table->increments('codAdmin');
-            $table->string('userAdmin', 50);
+            $table->string('userAdmin', 50)->unique();
             $table->string('senhaAdmin', 50);
+            $table->timestamps();
         });
     }
 

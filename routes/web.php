@@ -11,6 +11,10 @@
 |
 */
 
+$router->get('/key', function() {
+    return \Illuminate\Support\Str::random(32);
+});
+
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
@@ -52,6 +56,7 @@ $router->group(['prefix' => 'admin'], function () use ($router) {
     $router->get('/', 'AdminController@index');
     $router->get('/{codAdmin}', 'AdminController@show');
     $router->post('/', 'AdminController@store');
+    $router->post('/authenticate', 'AdminController@authenticate');
     $router->put('/{codAdmin}', 'AdminController@update');
 });
 

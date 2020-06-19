@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Database\Eloquent\Collection;
+
+use App\Categoria;
 
 class CategoriaController extends Controller
 {
@@ -35,7 +40,7 @@ class CategoriaController extends Controller
      */
     public function store(Request $request){
         $categoria = $this->validate($request, Categoria::$rules);
-        Categoria::create($categoria);
+        return Categoria::create($categoria);
     }
 
     /**

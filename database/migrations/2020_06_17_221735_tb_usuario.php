@@ -20,6 +20,7 @@ class TbUsuario extends Migration
             $table->string('imagemUsuario');
             $table->string('codSMSUsuario', 50);
             $table->integer('dataUsoSMSUsuario');
+            $table->timestamps();
         });
     }
 

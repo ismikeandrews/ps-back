@@ -17,6 +17,7 @@ class TbCurtidaPublicacao extends Migration
             $table->increments('codCurtidaPublicacao');
             $table->integer('codUsuario')->unsigned();
             $table->integer('codPublicacao')->unsigned();
+            $table->timestamps();
         });
 
         Schema::table('tbCurtidaPublicacao', function($table){

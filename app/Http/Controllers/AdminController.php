@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Str;
+
+use App\Admin;
 
 class AdminController extends Controller
 {
@@ -35,7 +41,8 @@ class AdminController extends Controller
      */
     public function store(Request $request){
         $admin = $this->validate($request, Admin::$rules);
-        Admin::create($admin);
+        $res = Admin::create($admin);
+        return response()->json(['status' => 'success']);
     }
 
     /**
@@ -52,5 +59,27 @@ class AdminController extends Controller
         $admin = Admin::findOrFail($codAdmin);
 
         $admin->update($request->all());
+    }
+
+    public function authenticate(Request $request){
+        $this->validate($request, [
+            'userAdmin'  => 'required',
+            'senhaAdmin' => 'required'
+        ]);
+
+        $admin = Admin::where('userAdmin', $request->input('userAdmin'))->first();
+
+        if ($request->input('senhaAdmin') === $admin->senhaAdmin) {
+            $apikey = base64_encode(Str::random(40));
+
+            return response()->json([
+                'status'    => 'success',
+                'token'   => $apikey, 
+                'adminId'   => $admin->codAdmin, 
+                'userAdmin' => $admin->userAdmin
+            ]);
+        }else{
+            return response()->json(['status' => 'fail'], 401);
+        }
     }
 }

@@ -21,6 +21,7 @@ class TbSala extends Migration
             $table->boolean('isAberta');
             $table->integer('codCriador')->unsigned();
             $table->integer('codAtividade')->unsigned();
+            $table->timestamps();
         });
 
         Schema::table('tbSala', function($table){

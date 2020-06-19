@@ -19,6 +19,7 @@ class TbPublicacao extends Migration
             $table->string('imagemPublicacao');
             $table->integer('codUsuario')->unsigned();
             $table->integer('codAtividade')->unsigned();
+            $table->timestamps();
         });
 
         Schema::table('tbPublicacao', function($table){

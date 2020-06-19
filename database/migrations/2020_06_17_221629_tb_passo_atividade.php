@@ -19,6 +19,7 @@ class TbPassoAtividade extends Migration
             $table->string('imagemPassoAtividade');
             $table->string('descricaoPassoAtividade');
             $table->integer('codAtividade')->unsigned();
+            $table->timestamps();
         });
 
         Schema::table('tbPassoAtividade', function($table){

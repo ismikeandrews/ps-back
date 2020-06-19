@@ -22,6 +22,7 @@ class TbAtividade extends Migration
             $table->boolean('isPrivada');
             $table->integer('codCategoria')->unsigned();
             $table->integer('codAdmin')->unsigned();
+            $table->timestamps();
         });
 
         Schema::table('tbAtividade', function($table){

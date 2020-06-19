@@ -18,6 +18,7 @@ class TbCategoria extends Migration
             $table->string('nomeCategoria', 50);
             $table->string('imagemCategoria');
             $table->integer('codAdmin')->unsigned();
+            $table->timestamps();
         });
 
         Schema::table('tbCategoria', function($table){

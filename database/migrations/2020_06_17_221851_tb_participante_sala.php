@@ -33,7 +33,7 @@ class TbParticipanteSala extends Migration
     public function down()
     {
         Schema::table('tbParticipanteSala', function (Blueprint $table) {
-            $table->dropForeign(['codUsuario', 'codSala']);
+            $table->dropForeign(['codParticipante', 'codSala']);
             $table->dropIfExists('tbParticipanteSala');
         });
     }

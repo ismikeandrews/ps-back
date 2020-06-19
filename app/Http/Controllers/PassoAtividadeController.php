@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Database\Eloquent\Collection;
+
+use App\PassoAtividade;
 
 class PassoAtividadeController extends Controller
 {
@@ -35,7 +40,7 @@ class PassoAtividadeController extends Controller
      */
     public function store(Request $request){
         $passoAtividade = $this->validate($request, PassoAtividade::$rules);
-        $passoAtividade['imagemPassoAtividade'] = $this->uploadImagem($request->imagem, 300, 300, 'PassoAtividade');
+        // $passoAtividade['imagemPassoAtividade'] = $this->uploadImagem($request->imagem, 300, 300, 'PassoAtividade');
         PassoAtividade::create($passoAtividade);
     }
 
