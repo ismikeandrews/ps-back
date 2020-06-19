@@ -58,4 +58,13 @@ class CategoriaController extends Controller
 
         $categoria->update($request->all());
     }
+
+    /**
+     * Exclui uma categoria
+     *
+     * @param int $codCategoria
+     */
+    public function destroy(int $codCategoria){
+        Categoria::destroy($codCategoria);
+    }
 }
