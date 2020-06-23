@@ -68,8 +68,10 @@ class AdminController extends Controller
         ]);
 
         $admin = Admin::where('userAdmin', $request->input('userAdmin'))->first();
-
-        if ($request->input('senhaAdmin') === $admin->senhaAdmin) {
+        if($admin === null){
+            return response()->json(['status' => 'fail'], 401); 
+        }
+        if ($request->senhaAdmin === $admin->senhaAdmin) {
             $apikey = base64_encode(Str::random(40));
 
             return response()->json([
