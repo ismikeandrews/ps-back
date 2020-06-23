@@ -65,4 +65,13 @@ class AtividadeController extends Controller
 
         $atividade->update($request->all());
     }
+
+    /**
+     * Exclui uma atividade
+     *
+     * @param int $codAtividade
+     */
+    public function destroy(int $codAtividade){
+        Atividade::destroy($codAtividade);
+    }
 }

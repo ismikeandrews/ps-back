@@ -22,6 +22,11 @@ $router->get('/', function () use ($router) {
 $router->group(['prefix' => 'atividade'], function () use ($router) {
     $router->get('{codAtividade}/publicacoes', 'PublicacaoController@index');
     $router->get('{codAtividade}/salas', 'SalaController@index');
+    $router->get('/', 'AtividadeController@index');
+    $router->get('/{codAtividade}', 'AtividadeController@show');
+    $router->post('/', 'AtividadeController@store');
+    $router->put('/{codAtividade}', 'AtividadeController@update');
+    $router->delete('/{codAtividade}', 'AtividadeController@destroy');
 });
 
 $router->group(['prefix' => 'curtida'], function () use ($router) {
@@ -60,18 +65,12 @@ $router->group(['prefix' => 'admin'], function () use ($router) {
     $router->put('/{codAdmin}', 'AdminController@update');
 });
 
-$router->group(['prefix' => 'atividade'], function () use ($router) {
-   $router->get('/', 'AtividadeController@index');
-   $router->get('/{codAtividade}', 'AtividadeController@show');
-   $router->post('/', 'AtividadeController@store');
-   $router->put('/{codAtividade}', 'AtividadeController@update');
-});
-
 $router->group(['prefix' => 'categoria'], function () use ($router) {
     $router->get('/','CategoriaController@index');
     $router->get('/{codCategoria}','CategoriaController@show');
     $router->post('/','CategoriaController@store');
     $router->put('/{codCategoria}','CategoriaController@update');
+    $router->delete('/{codCategoria}', 'CategoriaController@destroy');
 });
 
 $router->group(['prefix' => 'passo-atividade'], function () use ($router) {
@@ -79,5 +78,6 @@ $router->group(['prefix' => 'passo-atividade'], function () use ($router) {
     $router->get('/{codPassoAtividade}', 'PassoAtividadeController@show');
     $router->post('/', 'PassoAtividadeController@store');
     $router->put('/{codPassoAtividade}', 'PassoAtividadeController@update');
+    $router->delete('/{codPassoAtividade}', 'PassoAtividadeController@destroy');
 
 });

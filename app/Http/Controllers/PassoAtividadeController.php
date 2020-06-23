@@ -24,7 +24,7 @@ class PassoAtividadeController extends Controller
      * Retorna um passo de uma atividade
      * pelo código
      *
-     * @param int $codAdmin
+     * @param int $codPassoAtividade
      * @return mixed
      */
     public function show(int $codPassoAtividade){
@@ -40,7 +40,7 @@ class PassoAtividadeController extends Controller
      */
     public function store(Request $request){
         $passoAtividade = $this->validate($request, PassoAtividade::$rules);
-        // $passoAtividade['imagemPassoAtividade'] = $this->uploadImagem($request->imagem, 300, 300, 'PassoAtividade');
+        $passoAtividade['imagemPassoAtividade'] = $this->uploadImagem($request->imagem, 300, 300, 'PassoAtividade');
         PassoAtividade::create($passoAtividade);
     }
 
@@ -63,5 +63,14 @@ class PassoAtividadeController extends Controller
         }
 
         $passoAtividade->update($request->all());
+    }
+
+    /**
+     * Exclui o passo de uma atividade
+     *
+     * @param int $codPassoAtividade
+     */
+    public function destroy(int $codPassoAtividade){
+        PassoAtividade::destroy($codPassoAtividade);
     }
 }
